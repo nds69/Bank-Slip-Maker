@@ -7,6 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0047BA">
+    <link rel="apple-touch-icon" href="icon.png">
+
     <style>
         body {
             font-family: 'Prompt', sans-serif;
@@ -81,22 +86,13 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* K-Bank Style (Green) */
+        /* Styles */
         .kbank { background: linear-gradient(135deg, #00a950 0%, #007a37 100%); }
-        
-        /* SCB Style (Purple) */
         .scb { background: linear-gradient(135deg, #4e2a84 0%, #7d4198 100%); }
-
-        /* BBL Style (Navy Blue) */
         .bbl { background: linear-gradient(135deg, #1e3a8a 0%, #1565c0 100%); }
-
-        /* KTB Style (Light Blue/Cyan) */
         .ktb { background: linear-gradient(135deg, #00a5e5 0%, #008dc9 100%); }
-
-        /* Krungsri Style (Yellow/Gold) - NEW */
         .bay { background: linear-gradient(135deg, #fec42d 0%, #f57f17 100%); }
 
-        /* Card Content */
         .card-icon {
             font-size: 24px;
             background: rgba(255,255,255,0.2);
@@ -132,7 +128,6 @@
             opacity: 0.8;
         }
 
-        /* Footer */
         .footer {
             margin-top: 40px;
             font-size: 12px;
@@ -155,7 +150,7 @@
         .bank-card:nth-child(2) { animation-delay: 0.2s; }
         .bank-card:nth-child(3) { animation-delay: 0.3s; }
         .bank-card:nth-child(4) { animation-delay: 0.4s; }
-        .bank-card:nth-child(5) { animation-delay: 0.5s; } /* Animation for Krungsri */
+        .bank-card:nth-child(5) { animation-delay: 0.5s; }
 
     </style>
 </head>
@@ -170,7 +165,8 @@
 
         <div class="bank-grid">
             
-            <a href="https://k-bank-slip-maker.netlify.app" class="bank-card kbank">
+            <!-- K-Bank -->
+            <a href="kbank.html" class="bank-card kbank">
                 <div class="card-icon">K</div>
                 <div class="card-info">
                     <span class="bank-name">Kasikorn Bank</span>
@@ -179,7 +175,8 @@
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
 
-            <a href="https://scb-card-design-maker.netlify.app" class="bank-card scb">
+            <!-- SCB -->
+            <a href="scb.html" class="bank-card scb">
                 <div class="card-icon">S</div>
                 <div class="card-info">
                     <span class="bank-name">SCB Easy</span>
@@ -188,7 +185,8 @@
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
 
-            <a href="https://bbl-card-design-maker.netlify.app" class="bank-card bbl">
+            <!-- Bangkok Bank -->
+            <a href="bbl.html" class="bank-card bbl">
                 <div class="card-icon">B</div>
                 <div class="card-info">
                     <span class="bank-name">Bangkok Bank</span>
@@ -197,8 +195,9 @@
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
 
-            <a href="https://ktb-card-design-maker.netlify.app" class="bank-card ktb">
-                <div class="card-icon">K</div>
+            <!-- Krungthai Bank -->
+            <a href="ktb.html" class="bank-card ktb">
+                <div class="card-icon">KTB</div>
                 <div class="card-info">
                     <span class="bank-name">Krungthai Bank</span>
                     <span class="bank-desc">Create Krungthai Card</span>
@@ -206,8 +205,9 @@
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
 
-            <a href="https://krungsri-bank-card-design.netlify.app" class="bank-card bay">
-                <div class="card-icon">K</div>
+            <!-- Krungsri Bank -->
+            <a href="krungsri.html" class="bank-card bay">
+                <div class="card-icon">BAY</div>
                 <div class="card-info">
                     <span class="bank-name">Krungsri Bank</span>
                     <span class="bank-desc">Create Krungsri Card</span>
@@ -221,20 +221,22 @@
             Developed by <a href="https://www.facebook.com/taknds69" target="_blank">Tint Aung Khaing</a>
         </div>
     </div>
-<!-- PWA Script to Register Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then((registration) => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, (err) => {
-          console.log('ServiceWorker registration failed: ', err);
-        });
-    });
-  }
-</script>
 
+    <!-- PWA Script -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful');
+            }, (err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
 
 </body>
 </html>
+
+
