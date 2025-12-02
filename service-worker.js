@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bank-card-maker-v5';
+const CACHE_NAME = 'bank-card-maker-v6'; // Version Update
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,11 +7,13 @@ const urlsToCache = [
   '/bbl.html',
   '/ktb.html',
   '/krungsri.html',
-  '/logo.png',           // App Icon & K-Bank Logo
+  '/ttb.html',           // TTB HTML added
+  '/logo.png',           // App Icon
   '/scb-logo.png',       
   '/bbl-logo.png',       
   '/ktb-logo.png',       
-  '/krungsri-logo.png'
+  '/krungsri-logo.png',
+  '/ttb-logo.png'        // TTB Logo added
 ];
 
 // Install
