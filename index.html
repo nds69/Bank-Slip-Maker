@@ -26,7 +26,6 @@
             text-align: center;
         }
 
-
         /* Hero Section */
         .hero-icon {
             font-size: 50px;
@@ -41,7 +40,6 @@
             display: inline-block;
         }
         
-        /* Hero Section */
         .hero-title {
             font-size: 24px;
             font-weight: 800;
@@ -83,24 +81,21 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        /* K-Bank Style */
-        .kbank {
-            background: linear-gradient(135deg, #00a950 0%, #007a37 100%);
-        }
+        /* K-Bank Style (Green) */
+        .kbank { background: linear-gradient(135deg, #00a950 0%, #007a37 100%); }
         
-        /* SCB Style */
-        .scb {
-            background: linear-gradient(135deg, #4e2a84 0%, #7d4198 100%);
-        }
+        /* SCB Style (Purple) */
+        .scb { background: linear-gradient(135deg, #4e2a84 0%, #7d4198 100%); }
 
-        /* BBL Style */
-        .bbl {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1565c0 100%);
-        }
+        /* BBL Style (Navy Blue) */
+        .bbl { background: linear-gradient(135deg, #1e3a8a 0%, #1565c0 100%); }
+
+        /* KTB Style (Light Blue/Cyan) - NEW ADDED */
+        .ktb { background: linear-gradient(135deg, #00a5e5 0%, #008dc9 100%); }
 
         /* Card Content */
         .card-icon {
-            font-size: 30px;
+            font-size: 24px; /* Slightly smaller to fit letters */
             background: rgba(255,255,255,0.2);
             width: 50px;
             height: 50px;
@@ -108,6 +103,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
         }
 
         .card-info {
@@ -132,7 +128,7 @@
             opacity: 0.8;
         }
 
-        /* Contact Dev Footer */
+        /* Footer */
         .footer {
             margin-top: 40px;
             font-size: 12px;
@@ -150,10 +146,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .bank-card { animation: fadeIn 0.5s ease-out forwards; }
+        .bank-card { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
         .bank-card:nth-child(1) { animation-delay: 0.1s; }
         .bank-card:nth-child(2) { animation-delay: 0.2s; }
         .bank-card:nth-child(3) { animation-delay: 0.3s; }
+        .bank-card:nth-child(4) { animation-delay: 0.4s; } /* Animation for KTB */
 
     </style>
 </head>
@@ -191,6 +188,15 @@
                 <div class="card-info">
                     <span class="bank-name">Bangkok Bank</span>
                     <span class="bank-desc">Create BBL Card</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://ktb-card-design-maker.netlify.app" class="bank-card ktb">
+                <div class="card-icon">K</div>
+                <div class="card-info">
+                    <span class="bank-name">Krungthai Bank</span>
+                    <span class="bank-desc">Create Krungthai Card</span>
                 </div>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
