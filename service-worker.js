@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bank-card-maker-v2';
+const CACHE_NAME = 'bank-card-maker-v3';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,12 +7,11 @@ const urlsToCache = [
   '/bbl.html',
   '/ktb.html',
   '/krungsri.html',
-  '/logo.png',           // K-Bank Logo
-  '/scb-logo.png',       // SCB Logo (png as per screenshot)
-  '/bbl-logo.png',       // BBL Logo
-  '/ktb-logo.png',       // KTB Logo
-  '/krungsri-logo.png',  // Krungsri Logo
-  '/icon.png'            // App Icon if you have one
+  '/logo.png',           // App Icon & K-Bank Logo
+  '/scb-logo.png',       
+  '/bbl-logo.png',       
+  '/ktb-logo.png',       
+  '/krungsri-logo.png'
 ];
 
 // Install
@@ -31,9 +30,9 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request)
       .then((response) => {
         if (response) {
-          return response; // Return from cache
+          return response;
         }
-        return fetch(event.request); // Fetch from net
+        return fetch(event.request);
       })
   );
 });
