@@ -1,6 +1,6 @@
 {
   "name": "Bank Card Design Maker",
-  "short_name": "Slip Maker",
+  "short_name": "Bank Card Design Maker",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
