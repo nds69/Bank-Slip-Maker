@@ -90,12 +90,15 @@
         /* BBL Style (Navy Blue) */
         .bbl { background: linear-gradient(135deg, #1e3a8a 0%, #1565c0 100%); }
 
-        /* KTB Style (Light Blue/Cyan) - NEW ADDED */
+        /* KTB Style (Light Blue/Cyan) */
         .ktb { background: linear-gradient(135deg, #00a5e5 0%, #008dc9 100%); }
+
+        /* Krungsri Style (Yellow/Gold) - NEW */
+        .bay { background: linear-gradient(135deg, #fec42d 0%, #f57f17 100%); }
 
         /* Card Content */
         .card-icon {
-            font-size: 24px; /* Slightly smaller to fit letters */
+            font-size: 24px;
             background: rgba(255,255,255,0.2);
             width: 50px;
             height: 50px;
@@ -104,6 +107,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .card-info {
@@ -150,7 +154,8 @@
         .bank-card:nth-child(1) { animation-delay: 0.1s; }
         .bank-card:nth-child(2) { animation-delay: 0.2s; }
         .bank-card:nth-child(3) { animation-delay: 0.3s; }
-        .bank-card:nth-child(4) { animation-delay: 0.4s; } /* Animation for KTB */
+        .bank-card:nth-child(4) { animation-delay: 0.4s; }
+        .bank-card:nth-child(5) { animation-delay: 0.5s; } /* Animation for Krungsri */
 
     </style>
 </head>
@@ -197,6 +202,15 @@
                 <div class="card-info">
                     <span class="bank-name">Krungthai Bank</span>
                     <span class="bank-desc">Create Krungthai Card</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://krungsri-bank-card-design.netlify.app" class="bank-card bay">
+                <div class="card-icon">K</div>
+                <div class="card-info">
+                    <span class="bank-name">Krungsri Bank</span>
+                    <span class="bank-desc">Create Krungsri Card</span>
                 </div>
                 <i class="fas fa-chevron-right arrow-icon"></i>
             </a>
