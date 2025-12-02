@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bank Slip Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+
+        /* Hero Section */
+        .hero-icon {
+            font-size: 50px;
+            color: #333;
+            margin-bottom: 10px;
+            background: white;
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        
+        /* Hero Section */
+        .hero-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        /* Bank Selection Cards */
+        .bank-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .bank-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .bank-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* K-Bank Style */
+        .kbank {
+            background: linear-gradient(135deg, #00a950 0%, #007a37 100%);
+        }
+        
+        /* SCB Style */
+        .scb {
+            background: linear-gradient(135deg, #4e2a84 0%, #7d4198 100%);
+        }
+
+        /* BBL Style */
+        .bbl {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1565c0 100%);
+        }
+
+        /* Card Content */
+        .card-icon {
+            font-size: 30px;
+            background: rgba(255,255,255,0.2);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-info {
+            flex-grow: 1;
+            text-align: left;
+            padding-left: 15px;
+        }
+
+        .bank-name {
+            font-size: 18px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .bank-desc {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .arrow-icon {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        /* Contact Dev Footer */
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #999;
+        }
+        .footer a {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bank-card { animation: fadeIn 0.5s ease-out forwards; }
+        .bank-card:nth-child(1) { animation-delay: 0.1s; }
+        .bank-card:nth-child(2) { animation-delay: 0.2s; }
+        .bank-card:nth-child(3) { animation-delay: 0.3s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+       <div class="hero-icon">
+            <i class="fas fa-swatchbook"></i>
+        </div>
+        <div class="hero-title">Slip Design Maker</div>
+        <div class="hero-subtitle">ဒီဇိုင်းပြုလုပ်လိုသော ဘဏ်ကဒ်ကို ရွေးချယ်ပါ</div>
+
+        <div class="bank-grid">
+            
+            <a href="https://k-bank-slip-maker.netlify.app" class="bank-card kbank">
+                <div class="card-icon">K</div>
+                <div class="card-info">
+                    <span class="bank-name">Kasikorn Bank</span>
+                    <span class="bank-desc">Create K-Plus Slip</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://scb-slip-maker.netlify.app" class="bank-card scb">
+                <div class="card-icon">S</div>
+                <div class="card-info">
+                    <span class="bank-name">SCB Easy</span>
+                    <span class="bank-desc">Create SCB Slip</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <a href="https://bbl-slip-maker.netlify.app" class="bank-card bbl">
+                <div class="card-icon">B</div>
+                <div class="card-info">
+                    <span class="bank-name">Bangkok Bank</span>
+                    <span class="bank-desc">Create BBL Slip</span>
+                </div>
+                <i class="fas fa-chevron-right arrow-icon"></i>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            Developed by <a href="https://www.facebook.com/taknds69" target="_blank">Tint Aung Khaing</a>
+        </div>
+    </div>
+
+</body>
+</html>
