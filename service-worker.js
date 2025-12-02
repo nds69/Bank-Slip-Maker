@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bank-card-maker-v4';
+const CACHE_NAME = 'bank-card-maker-v5';
 const urlsToCache = [
   '/',
   '/index.html',
