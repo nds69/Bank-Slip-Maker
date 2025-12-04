@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>K-Bank Card Design Maker</title>
+    <title>K-Bank Slip Maker</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -56,7 +56,7 @@
         input:focus { outline: none; border-color: #00a950; background: #fff; }
         button { width: 100%; padding: 15px; background: linear-gradient(90deg, #00a950 0%, #007a37 100%); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 169, 80, 0.3); margin-top: 10px; }
 
-        /* Contact Bubble (Original) */
+        /* Contact Bubble */
         .contact-bubble { position: fixed; top: 20px; right: 20px; background: #3b5998; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 999; animation: bounce 2s infinite; }
 
         /* Contact Modal */
@@ -65,7 +65,7 @@
         .modal-btn { display: block; margin: 15px auto 0 auto; padding: 10px 20px; background: #1877f2; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 14px; width: fit-content; }
         .close-btn { margin-top: 15px; color: #666; cursor: pointer; font-size: 13px; text-decoration: underline; display: block; }
 
-        /* Facebook Modal (User Provided Style) */
+        /* Facebook Modal */
         .fb-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 3000; }
         .fb-modal-content { background: white; width: 85%; max-width: 320px; border-radius: 8px; padding: 20px; text-align: left; box-shadow: 0 10px 40px rgba(0,0,0,0.4); animation: popIn 0.2s ease-out; }
         .fb-modal-header { font-weight: bold; font-size: 16px; color: #1877f2; display: flex; align-items: center; margin-bottom: 15px; }
@@ -83,7 +83,7 @@
 <body>
 
     <div class="container">
-        <h2><i class="fas fa-wallet"></i> K-Bank Card Maker</h2>
+        <h2><i class="fas fa-wallet"></i> K-Bank Slip Maker</h2>
 
         <div class="slip-wrapper" id="kbank-slip">
             <div class="header-section">
@@ -143,7 +143,7 @@
         </div>
     </div>
 
-    <!-- Facebook Warning Modal (Matches Screenshot) -->
+    <!-- Facebook Warning Modal -->
     <div class="fb-modal-overlay" id="fbModal">
         <div class="fb-modal-content">
             <div class="fb-modal-header">
@@ -179,11 +179,18 @@
                 formatNum(document.getElementById('in-num'));
             }
 
-            // If auto=true, trigger download automatically
+            // If auto=true, trigger download automatically and then CLEAN URL
             if (autoParam === 'true') {
                 setTimeout(() => {
                     generateAndDownload();
-                }, 1000); // 1 sec delay to ensure fonts load
+                    
+                    // --- CLEAN URL RESET Logic ---
+                    // This removes the ?name=...&auto=true from the address bar
+                    // preventing loop on refresh
+                    const cleanUrl = window.location.pathname;
+                    window.history.replaceState({}, document.title, cleanUrl);
+                    
+                }, 1000); 
             }
         }
 
