@@ -64,6 +64,12 @@
         .fb-instruction { background: #f0f2f5; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #333; }
         .fb-instruction i { color: #1877f2; margin-right: 5px; font-size: 16px; }
         
+        .chrome-btn {
+            display: inline-block; padding: 12px 20px; background: #4285F4; color: white; 
+            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 14px;
+            margin-bottom: 10px; width: 100%; box-sizing: border-box;
+        }
+
         .close-btn { margin-top: 10px; color: #666; cursor: pointer; font-size: 13px; text-decoration: underline; display: block; }
         
         @keyframes popIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
@@ -117,18 +123,25 @@
         </div>
     </div>
 
-    <!-- Facebook Warning Modal -->
+    <!-- Facebook Warning Modal with Auto-Redirect Button -->
     <div class="modal-overlay" id="fbModal">
         <div class="modal-content">
-            <h3 style="color:#1877f2; margin:0 0 15px 0;"><i class="fab fa-facebook"></i> Browser Warning</h3>
+            <h3 style="color:#1877f2; margin:0 0 15px 0;"><i class="fab fa-facebook"></i> Facebook Browser Detected</h3>
             <p class="fb-warning">
-                Facebook App အတွင်းတွင် ပုံ Download ပြုလုပ်၍မရနိုင်ပါ။
+                Facebook App တွင် Download မရနိုင်ပါ။ Chrome တွင်ဖွင့်ရန် ကြိုးစားနေပါသည်...
             </p>
+            
+            <!-- Force Open Button -->
+            <a id="force-chrome-btn" href="#" class="chrome-btn">
+                <i class="fab fa-chrome"></i> Open in Chrome Now
+            </a>
+
             <div class="fb-instruction">
+                <div style="margin-bottom:8px;">အဆင်မပြေပါက -</div>
                 <div style="margin-bottom:8px;"><i class="fas fa-ellipsis-h"></i> <b>အပေါ်ထောင့်ရှိ ... (၃ စက်) ကိုနှိပ်ပါ</b></div>
-                <div><i class="fab fa-chrome"></i> <b>Open in External Browser (သို့) Open in Chrome ကို ရွေးပါ</b></div>
+                <div><i class="fab fa-chrome"></i> <b>Open in Browser ကို ရွေးပါ</b></div>
             </div>
-            <div style="font-size: 12px; color: #888;">ထို့နောက် Chrome တွင် Download ပြန်လုပ်ပါ။</div>
+            
             <span class="close-btn" onclick="closeFbModal()">Close</span>
         </div>
     </div>
@@ -156,14 +169,26 @@
             const isFacebook = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
 
             if (isFacebook) {
+                // Show Popup
                 document.getElementById('fbModal').style.display = 'flex';
-                return; // Stop here if Facebook
+                
+                // Attempt Auto-Redirect to Chrome using Intent (Android)
+                const currentUrl = window.location.href.replace('https://', '').replace('http://', '');
+                const intentUrl = `intent://${currentUrl}#Intent;scheme=https;package=com.android.chrome;end`;
+                
+                // Set the button link
+                document.getElementById('force-chrome-btn').href = intentUrl;
+                
+                // Try to trigger automatically after 1 second
+                setTimeout(() => {
+                    window.location.href = intentUrl;
+                }, 1000);
+                
+                return; // Stop normal download
             }
 
-            // 2. Normal Download Logic
+            // 2. Normal Download Logic (For Chrome/Safari)
             const el = document.getElementById('kbank-slip');
-            
-            // Clean Style
             const originalBorder = el.style.border;
             const originalShadow = el.style.boxShadow;
             const originalRadius = el.style.borderRadius;
@@ -173,12 +198,10 @@
             el.style.boxShadow = '0 0 15px rgba(0,0,0,0.1)';
 
             html2canvas(el, { scale: 3, backgroundColor: "#ffffff" }).then(canvas => {
-                // Restore Styles
                 el.style.border = originalBorder;
                 el.style.boxShadow = originalShadow;
                 el.style.borderRadius = originalRadius;
 
-                // Better Mobile Download (Blob method)
                 canvas.toBlob(function(blob) {
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
@@ -196,4 +219,5 @@
     </script>
 </body>
 </html>
+
 
