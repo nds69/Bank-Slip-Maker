@@ -56,22 +56,17 @@
         input:focus { outline: none; border-color: #00a950; background: #fff; }
         button { width: 100%; padding: 15px; background: linear-gradient(90deg, #00a950 0%, #007a37 100%); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0, 169, 80, 0.3); margin-top: 10px; }
 
-        /* Contact & Modals */
-        .contact-bubble { position: fixed; top: 20px; right: 20px; background: #3b5998; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer; z-index: 999; animation: bounce 2s infinite; }
-        
-        /* Modal General Style */
+        /* Modals */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 2000; backdrop-filter: blur(5px); }
-        .modal-content { background: white; padding: 20px; border-radius: 15px; text-align: center; width: 90%; max-width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popIn 0.3s ease-out; position: relative; }
+        .modal-content { background: white; padding: 25px; border-radius: 15px; text-align: center; width: 90%; max-width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popIn 0.3s ease-out; position: relative; }
         
-        .modal-btn { display: block; margin: 15px auto 0 auto; padding: 10px 20px; background: #1877f2; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 14px; width: fit-content; }
-        .close-btn { margin-top: 15px; color: #666; cursor: pointer; font-size: 13px; text-decoration: underline; display: block; }
+        .fb-warning { color: #555; font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
+        .fb-instruction { background: #f0f2f5; padding: 15px; border-radius: 10px; margin-bottom: 20px; text-align: left; font-size: 13px; color: #333; }
+        .fb-instruction i { color: #1877f2; margin-right: 5px; font-size: 16px; }
         
-        /* Result Image in Modal */
-        #result-img { width: 100%; border: 1px solid #ddd; border-radius: 10px; margin-top: 10px; }
-        .save-hint { font-size: 13px; color: #e65100; background: #fff3e0; padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px solid #ffe0b2; }
-
+        .close-btn { margin-top: 10px; color: #666; cursor: pointer; font-size: 13px; text-decoration: underline; display: block; }
+        
         @keyframes popIn { from {transform: scale(0.8); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(5px);} 60% {transform: translateY(10px);} }
     </style>
 </head>
 <body>
@@ -98,9 +93,7 @@
                 <div class="green-label">KASIKORNTHAI</div>
                 <div class="account-number" id="disp-num">000-000-0000</div>
             </div>
-            <div class="bottom-bar" id="disp-name">
-                MR. TINT AUNG KHAING
-            </div>
+            <div class="bottom-bar" id="disp-name">MR. TINT AUNG KHAING</div>
         </div>
 
         <div class="controls">
@@ -118,38 +111,25 @@
                     <input type="tel" id="in-num" placeholder="000-000-0000" maxlength="12" oninput="formatNum(this)">
                 </div>
             </div>
-            <!-- Update Button Text -->
             <button onclick="download()">
-                <i class="fas fa-camera"></i> Generate Card (ပုံထုတ်ရန်)
+                <i class="fas fa-download"></i> Download Image
             </button>
         </div>
     </div>
 
-    <!-- Contact Bubble -->
-    <div class="contact-bubble" onclick="openContactModal()">
-        <i class="fab fa-facebook-f"></i>
-    </div>
-
-    <!-- Contact Modal -->
-    <div class="modal-overlay" id="contactModal">
+    <!-- Facebook Warning Modal -->
+    <div class="modal-overlay" id="fbModal">
         <div class="modal-content">
-            <h3 style="color:#333; margin:0 0 10px 0; font-size:18px;">Contact Developer</h3>
-            <p style="color:#666; font-size: 13px; margin:0;">Web Design ရေးဆွဲလိုပါက<br>Messenger မှ ဆက်သွယ်နိုင်ပါသည်။</p>
-            <a href="https://www.facebook.com/taknds69" target="_blank" class="modal-btn"><i class="fab fa-facebook-messenger"></i> Chat on Messenger</a>
-            <span class="close-btn" onclick="closeContactModal()">Close</span>
-        </div>
-    </div>
-
-    <!-- Result Modal (For Facebook Browser Fix) -->
-    <div class="modal-overlay" id="resultModal">
-        <div class="modal-content">
-            <h3 style="color:#00a950; margin:0 0 5px 0;">Card Created!</h3>
-            <div class="save-hint">
-                <i class="fas fa-hand-pointer"></i> <b>Facebook မှ အသုံးပြုသူများ</b><br>
-                ပုံကို ဖိနှိပ်ပြီး <b>Save Image</b> လုပ်ပါ။
+            <h3 style="color:#1877f2; margin:0 0 15px 0;"><i class="fab fa-facebook"></i> Browser Warning</h3>
+            <p class="fb-warning">
+                Facebook App အတွင်းတွင် ပုံ Download ပြုလုပ်၍မရနိုင်ပါ။
+            </p>
+            <div class="fb-instruction">
+                <div style="margin-bottom:8px;"><i class="fas fa-ellipsis-h"></i> <b>အပေါ်ထောင့်ရှိ ... (၃ စက်) ကိုနှိပ်ပါ</b></div>
+                <div><i class="fab fa-chrome"></i> <b>Open in External Browser (သို့) Open in Chrome ကို ရွေးပါ</b></div>
             </div>
-            <img id="result-img" src="" alt="Generated Card">
-            <span class="close-btn" onclick="closeResultModal()">Close</span>
+            <div style="font-size: 12px; color: #888;">ထို့နောက် Chrome တွင် Download ပြန်လုပ်ပါ။</div>
+            <span class="close-btn" onclick="closeFbModal()">Close</span>
         </div>
     </div>
 
@@ -171,9 +151,19 @@
         }
 
         function download() {
+            // 1. Detect Facebook In-App Browser
+            const ua = navigator.userAgent || navigator.vendor || window.opera;
+            const isFacebook = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+
+            if (isFacebook) {
+                document.getElementById('fbModal').style.display = 'flex';
+                return; // Stop here if Facebook
+            }
+
+            // 2. Normal Download Logic
             const el = document.getElementById('kbank-slip');
             
-            // UI Styles removal for clean capture
+            // Clean Style
             const originalBorder = el.style.border;
             const originalShadow = el.style.boxShadow;
             const originalRadius = el.style.borderRadius;
@@ -188,18 +178,22 @@
                 el.style.boxShadow = originalShadow;
                 el.style.borderRadius = originalRadius;
 
-                // FIX for Facebook Browser: Show Image in Modal instead of Auto-Download
-                const imgData = canvas.toDataURL("image/png");
-                document.getElementById('result-img').src = imgData;
-                document.getElementById('resultModal').style.display = 'flex';
+                // Better Mobile Download (Blob method)
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.download = 'k-slip-card.png';
+                    link.href = url;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
             });
         }
 
-        // Modals Logic
-        function openContactModal() { document.getElementById('contactModal').style.display = 'flex'; }
-        function closeContactModal() { document.getElementById('contactModal').style.display = 'none'; }
-        
-        function closeResultModal() { document.getElementById('resultModal').style.display = 'none'; }
+        function closeFbModal() { document.getElementById('fbModal').style.display = 'none'; }
     </script>
 </body>
 </html>
+
