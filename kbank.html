@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>K-Bank Slip Maker</title>
+    <title>K-Bank Card Design Maker</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
@@ -83,7 +83,7 @@
 <body>
 
     <div class="container">
-        <h2><i class="fas fa-wallet"></i> K-Bank Slip Maker</h2>
+        <h2><i class="fas fa-wallet"></i> K-Bank Card Maker</h2>
 
         <div class="slip-wrapper" id="kbank-slip">
             <div class="header-section">
@@ -150,8 +150,8 @@
                 <i class="fab fa-facebook"></i> Facebook Browser Detected
             </div>
             <div class="fb-modal-body">
-                <h4>You're leaving our app</h4>
-                <p>The website you're viewing is attempting to open an external app. Would you like to continue?</p>
+                <h4>Facebook တွင် တိုက်ရိုက် Download ပိတ်ထားသည်</h4>
+                <p>သင်အသုံးပြုသော ဝဘ်ဆိုက်သည် ပုံအား Download ဖွင့်ရန် ကြိုးစားနေပါသည်၊ ဆက်လုပ်လိုပါသလား?</p>
             </div>
             <div class="fb-modal-actions">
                 <button class="fb-btn-back" onclick="closeFbModal()">GO BACK</button>
@@ -252,7 +252,7 @@
                 canvas.toBlob(function(blob) {
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
-                    link.download = 'k-slip-card.png';
+                    link.download = 'k-card.png';
                     link.href = url;
                     document.body.appendChild(link);
                     link.click();
